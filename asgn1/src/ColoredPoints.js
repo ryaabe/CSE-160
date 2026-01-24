@@ -106,26 +106,6 @@ function advanceAndPlayStep() {
   }
 }
 
-function tick(now) {
-  const t = now * 0.001;
-  const dt = g_lastTime ? (t - g_lastTime) : 0;
-  g_lastTime = t;
-
-  for (let i = g_notesList.length - 1; i >= 0; i--) {
-    const n = g_notesList[i];
-    n.life -= dt;
-    n.y += n.vy * dt;
-    n.shape.position[1] = n.y;
-
-    if (n.life <= 0 || n.y > 1.2) {
-      g_notesList.splice(i, 1);
-    }
-  }
-
-  renderAllShapes();
-  requestAnimationFrame(tick);
-}
-
 function addActionsForHtmlUI() {
   // Button Events
   document.getElementById('green').onclick = function () { g_selectedColor = [0.0, 1.0, 0.0, 1.0]; };
