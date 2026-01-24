@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <div>
+        <canvas id="webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+        </canvas>
+        <p>
+
+        <p id="numdot"> XXX </p>
+
+        <button type="button" id="green">Green</button>
+        <button type="button" id="red">Red</button>
+
+        <button type="button" id="clearButton">Clear</button>
+        <p>
+
+        <button type="button" id="pointButton">Point</button>
+        <button type="button" id="triButton">Triangle</button>
+        <button type="button" id="circleButton">Circle</button>
+        <button type="button" id="noteButton">Note</button>
+        <p>
+        Red <input type="range" min="0" max="100" value="100" class="slider" id="redSlide">
+        </p>
+        <p>
+        Green <input type="range" min="0" max="100" value="0" class="slider" id="greenSlide">
+        </p>
+        <p>
+        Blue <input type="range" min="0" max="100" value="0" class="slider" id="blueSlide">
+        </p>
+
+        <p>
+        Size <input type="range" min="5" max="40" value="0" class="slider" id="sizeSlide">
+        </p>
+        <p>
+        Segments <input type="range" min="5" max="40" value="0" class="slider" id="segmentSlide">
+        </p>
+        <button id="mikuButton">Miku</button>
+        <button id="drumButton">Drum</button>
+        <button id="playStep">Play Step (All)</button>
+      </div>
+
+      <div>
+        <canvas id="miku" width="400" height="400">
+          Please use a browser that supports "canvas"
+        </canvas>
+        <canvas id="drum" width="400" height="400">
+          Please use a browser that supports "canvas"
+        </canvas>
+      </div>
+    </div>
+       
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Point.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Miku.js"></script>
+    <script src="MusicBox.js"></script>
+    <script src="ColoredPoints.js"></script>
+  </body>
+</html>
