@@ -1,7 +1,7 @@
 // MusicBox.js
 
 const SLICES = 64;
-const EXT = "wav";
+const EXT = "ogg";
 
 const BANKS = {
   miku:  { basePath: "../sounds/miku_box",  prefix: "miku_"  },
