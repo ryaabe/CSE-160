@@ -1,6 +1,6 @@
 ## Assignment 1: Drawing Program - Ryan Abe
 
-NOTE: Please make sure your computer/browser audio is on and give the website a few seconds to preload the sounds.
+NOTE: Please make sure your computer/browser audio is on and give the website a few seconds to preload the sounds. Also, some browsers may work better than others. In my own testing, Safari had trouble loading the audio files fast, while FireFox had no issues.
 
 ### Assignment Basics
 
