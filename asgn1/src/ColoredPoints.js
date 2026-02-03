@@ -548,4 +548,5 @@ function drawDrum() {
   drawTrianglesOnDrum(drum_bottom_rim_vertices, RIM);
   drawTrianglesOnDrum(drum_A_vertices, LETTERS);
   drawTrianglesOnDrum(drum_R_vertices, LETTERS);
+
 }
