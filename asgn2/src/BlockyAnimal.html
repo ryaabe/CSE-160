@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+      <div>
+        <canvas id="webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+        </canvas>
+        <p>
+
+        <p id="numdot"> XXX </p>
+
+
+        <p>
+Please check README.md for assignment notes.
+<p>
+  Tail 1 <input type="range" min="-70" max="50" value="0" class="slider" id="tail1Slide">
+</p>
+<p>
+  Tail 2 <input type="range" min="-70" max="50" value="0" class="slider" id="tail2Slide">
+</p>
+<p>
+  Tail 3 <input type="range" min="-70" max="50" value="0" class="slider" id="tail3Slide">
+</p>
+<p>
+  Tail 4 <input type="range" min="-70" max="50" value="0" class="slider" id="tail4Slide">
+</p>
+<p>
+  Tail 5 <input type="range" min="-70" max="50" value="0" class="slider" id="tail5Slide">
+</p>
+Animation:
+<button type="button" id="animationTailOn">ON</button>
+<button type="button" id="animationTailOFF">OFF</button>
+
+
+
+
+
+      </div>
+
+    </div>
+       
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Point.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cone.js"></script>
+    <script src="BlockyAnimal.js"></script>
+  </body>
+</html>
