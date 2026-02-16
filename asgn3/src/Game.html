@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #101419;
+        color: #e5e7eb;
+        font-family: monospace;
+      }
+
+      #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      #startObjective {
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #2b3138;
+        border-radius: 0.35rem;
+        background: rgba(16, 20, 25, 0.88);
+        text-align: center;
+        max-width: 1200px;
+        transition: opacity 0.35s ease;
+      }
+
+      #startObjective.hidden {
+        opacity: 0;
+      }
+
+      #webgl {
+        border: 1px solid #2b3138;
+      }
+
+      .hud-row {
+        margin: 0;
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <div id="app">
+      <p id="startObjective">
+        Make it to the house by following the path before it turns night!
+      </p>
+      <canvas id="webgl" width="1200" height="675">
+        Please use a browser that supports "canvas"
+      </canvas>
+      <p id="playerCoords" class="hud-row">Player Coords: (0, 0, 0)</p>
+      <p id="fpsCounter" class="hud-row">FPS: 0.0</p>
+      <div class="controls">
+        <label for="mouseSensitivitySlider">Mouse Sensitivity:</label>
+        <input
+          id="mouseSensitivitySlider"
+          type="range"
+          min="0.01"
+          max="0.50"
+          step="0.01"
+          value="0.12"
+        />
+        <span id="mouseSensitivityValue">0.12</span>
+      </div>
+      <div class="controls">
+        <label for="fogAmountSlider">Fog Amount:</label>
+        <input
+          id="fogAmountSlider"
+          type="range"
+          min="0.00"
+          max="1.00"
+          step="0.01"
+          value="0.50"
+        />
+        <span id="fogAmountValue">0.50</span>
+      </div>
+    </div>
+
+    <!-- WebGL / Matsuda libs -->
+    <script src="/asgn3/lib/webgl-utils.js"></script>
+    <script src="/asgn3/lib/webgl-debug.js"></script>
+    <script src="/asgn3/lib/cuon-utils.js"></script>
+    <script src="/asgn3/lib/cuon-matrix.js?v=20260212"></script>
+
+    <script src="Triangle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Transform.js"></script>
+    <script src="Player.js"></script>
+    <script src="BlockData.js"></script>
+    <script src="Entity.js"></script>
+
+    <script src="Renderer.js"></script>
+    <script src="InputHandler.js"></script>
+    <script src="World.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
