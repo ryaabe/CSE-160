@@ -50,7 +50,7 @@ ___
 
 [Instanced Drawing](https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html)
 [Fog Rendering](https://webglfundamentals.org/webgl/lessons/webgl-fog.html)
-[Atlas Creation](https://imagemagick.org/#gsc.tab=0)
+[Texture Atlas Creation](https://imagemagick.org/#gsc.tab=0)
 
 [AABB Concept](https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_collision_detection)
 [General Web Game Development](https://developer.mozilla.org/en-US/docs/Games)
