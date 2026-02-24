@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World</title>
+  </head>
+
+  <body onload="main()">
+    <div id="app">
+      <p id="startObjective">
+Make sure you have audio turned on !
+      </p>
+      <canvas id="webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+      </canvas>
+      <canvas
+        id="hudOverlay"
+        width="400"
+        height="400"
+        aria-hidden="true"
+        style="position: fixed; left: 0; top: 0; pointer-events: none; z-index: 2"
+      ></canvas>
+      <p id="playerCoords" class="hud-row">Player Coords: (0, 0, 0)</p>
+      <p id="fpsCounter" class="hud-row">FPS: 0.0</p>
+      <div class="controls">
+        <label for="mouseSensitivitySlider">Mouse Sensitivity:</label>
+        <input
+          id="mouseSensitivitySlider"
+          type="range"
+          min="0.01"
+          max="0.50"
+          step="0.01"
+          value="0.12"
+        />
+        <span id="mouseSensitivityValue">0.12</span>
+      </div>
+      <div class="controls">
+        <label for="fogAmountSlider">Fog Amount:</label>
+        <input
+          id="fogAmountSlider"
+          type="range"
+          min="0.00"
+          max="1.00"
+          step="0.01"
+          value="0.50"
+        />
+        <span id="fogAmountValue">0.50</span>
+      </div>
+      <div class="controls">
+        <label for="fogFarMinSlider">Fog Far Min:</label>
+        <input
+          id="fogFarMinSlider"
+          type="range"
+          min="1"
+          max="200"
+          step="1"
+          value="20"
+        />
+        <span id="fogFarMinValue">20</span>
+      </div>
+      <div class="controls">
+        <label for="fogFarMaxSlider">Fog Far Max:</label>
+        <input
+          id="fogFarMaxSlider"
+          type="range"
+          min="1"
+          max="300"
+          step="1"
+          value="140"
+        />
+        <span id="fogFarMaxValue">140</span>
+      </div>
+    </div>
+
+    <!-- WebGL / Matsuda libs -->
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+
+    <script src="Triangle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Transform.js"></script>
+    <script src="Player.js"></script>
+    <script src="BlockData.js"></script>
+    <script src="Entity.js"></script>
+
+    <script src="Renderer.js"></script>
+    <script src="SoundManager.js"></script>
+    <script src="InputHandler.js"></script>
+    <script src="World.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
