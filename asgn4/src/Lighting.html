@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eef1f7;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      .layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 24px;
+      }
+
+      .canvas-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .instructions-panel {
+        width: 260px;
+        background: #fff;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      .instructions-panel h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        color: #0f172a;
+      }
+
+      .instructions-panel p {
+        margin: 0;
+        color: #1e293b;
+        line-height: 1.5;
+      }
+
+      #webgl {
+        width: 720px;
+        height: 720px;
+        border: 1px solid #1f2937;
+        background: #000;
+      }
+
+      #numdot {
+        margin: 10px 0 0;
+        font-weight: 600;
+      }
+
+      .note {
+        margin: 8px 0 0;
+        color: #334155;
+      }
+
+      .controls-panel {
+        width: 320px;
+        max-height: 720px;
+        overflow: auto;
+        background: #fff;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      .controls-panel p {
+        margin: 10px 0;
+      }
+
+      .controls-panel input[type="range"] {
+        width: 100%;
+      }
+
+      .control-group {
+        margin-bottom: 12px;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #f8fafc;
+      }
+
+      .control-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .control-group h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        color: #0f172a;
+      }
+
+      .button-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <div class="layout">
+      <aside class="instructions-panel">
+        <h3>Instructions</h3>
+        <p>WASD + Shift/Ctrl to move the camera through space. Look around using the mouse. Alt click to poke.</p>
+      </aside>
+
+      <div class="canvas-panel">
+        <canvas id="webgl" width="720" height="720">
+          Please use a browser that supports "canvas"
+        </canvas>
+        <p id="numdot">XXX</p>
+        <p class="note">Please check README.md for assignment notes.</p>
+      </div>
+
+      <div class="controls-panel">
+        <section class="control-group">
+          <h3>Tail Controls</h3>
+          <p>Tail 1 <input type="range" min="-70" max="50" value="0" class="slider" id="tail1Slide"></p>
+          <p>Tail 2 <input type="range" min="-70" max="50" value="0" class="slider" id="tail2Slide"></p>
+          <p>Tail 3 <input type="range" min="-70" max="50" value="0" class="slider" id="tail3Slide"></p>
+          <p>Tail 4 <input type="range" min="-70" max="50" value="0" class="slider" id="tail4Slide"></p>
+          <p>Tail 5 <input type="range" min="-70" max="50" value="0" class="slider" id="tail5Slide"></p>
+          <p class="button-row">
+            Tail Animation:
+            <button type="button" id="animationTailOn">ON</button>
+            <button type="button" id="animationTailOFF">OFF</button>
+          </p>
+          <p class="button-row">
+            Poke:
+            <button type="button" id="pokeBtn">POKE</button>
+          </p>
+        </section>
+
+        <section class="control-group">
+          <h3>View</h3>
+          <p class="button-row">
+            Normal Visualization:
+            <button type="button" id="normalVisOn">ON</button>
+            <button type="button" id="normalVisOFF">OFF</button>
+          </p>
+        </section>
+
+        <section class="control-group">
+          <h3>Point Light</h3>
+          <p class="button-row">
+            Enabled:
+            <button type="button" id="pointLightOn">ON</button>
+            <button type="button" id="pointLightOff">OFF</button>
+          </p>
+          <p class="button-row">
+            Orbit Animation:
+            <button type="button" id="lightAnimOn">ON</button>
+            <button type="button" id="lightAnimOff">OFF</button>
+          </p>
+          <p>Light X <input type="range" min="-2" max="2" value="0.0" step="0.01" class="slider" id="lightX"></p>
+          <p>Light Y <input type="range" min="-1" max="2" value="0.8" step="0.01" class="slider" id="lightY"></p>
+          <p>Light Z <input type="range" min="-2" max="2" value="0.0" step="0.01" class="slider" id="lightZ"></p>
+          <p>Light R <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="lightR"></p>
+          <p>Light G <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="lightG"></p>
+          <p>Light B <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="lightB"></p>
+        </section>
+
+        <section class="control-group">
+          <h3>Spot Light</h3>
+          <p class="button-row">
+            Enabled:
+            <button type="button" id="spotLightOn">ON</button>
+            <button type="button" id="spotLightOff">OFF</button>
+          </p>
+          <p>Spot R <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="spotR"></p>
+          <p>Spot G <input type="range" min="0" max="1" value="1" step="0.01" class="slider" id="spotG"></p>
+          <p>Spot B <input type="range" min="0" max="1" value="0" step="0.01" class="slider" id="spotB"></p>
+          <p>Spot X <input type="range" min="-2" max="2" value="0.9" step="0.01" class="slider" id="spotX"></p>
+          <p>Spot Y <input type="range" min="-1" max="2" value="1.2" step="0.01" class="slider" id="spotY"></p>
+          <p>Spot Z <input type="range" min="-2" max="2" value="0.0" step="0.01" class="slider" id="spotZ"></p>
+          <p>Spot Inner <input type="range" min="1" max="60" value="12" step="0.1" class="slider" id="spotInner"></p>
+          <p>Spot Outer <input type="range" min="2" max="80" value="30" step="0.1" class="slider" id="spotOuter"></p>
+        </section>
+      </div>
+    </div>
+       
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Point.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cone.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="Model.js"></script>
+    <script src="BlockyAnimal.js"></script>
+  </body>
+</html>
